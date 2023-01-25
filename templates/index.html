@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="static/css/style.css" rel="stylesheet" >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Insurance Cost In USA</title>
+    
+        <style>
+            body {
+              background-image: url('https://images.pexels.com/photos/3844581/pexels-photo-3844581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            }
+        </style>
+<body>
+    <div class="container">
+        <div class="brand-logo"></div>
+        <div class="brand-title">Medical Insurance Cost In USA</div>
+        <form method="post" accept-charset="utf-8" name="Modelform",style="text-align:center">
+        <div class="col-md-10" style="text-align: center">
+            <label class="text-label"><b>Select Age:</b> </label>
+            <select class="selectpicker form-control" id="age" name="age" required="1"
+                   
+            {% for for_age in age %}
+
+            <option value="{{ for_age }}">{{ for_age }}</option>
+
+            {% endfor %}
+                
+            </select>
+            <div class="col-md-10" style="text-align: center">
+                <label class="text-label-1"><b>Select Sex:</b> </label>
+                <select class="selectpicker form-control" id="sex" name="sex" required="1">
+
+                {% for for_sex in sex %}
+
+                <option value="{{ for_sex }}">{{ for_sex }}</option>
+
+                {% endfor %}
+
+                </select>
+            </div>
+            <div class="col-md-10" style="text-align: center">
+                <label class="text-label-1"><b>Select BMI:</b> </label>
+                <select class="selectpicker form-control" id="bmi" name="bmi" required="1">
+
+                {% for for_bmi in bmi %}
+
+                <option value="{{ for_bmi }}">{{ for_bmi }}</option>
+                    
+                {% endfor %}
+
+                </select>
+            </div>
+            <div class="col-md-10" style="text-align: center">
+                <label class="text-label-1"><b>Select Children:</b> </label>
+                <select class="selectpicker form-control" id="children" name="children" required="1">
+
+                {% for for_children in children %}
+
+                <option value="{{ for_children }}">{{ for_children }}</option>
+                    
+                {% endfor %}
+
+                </select>
+            </div>
+            <div class="col-md-10" style="text-align: center">
+                <label class="text-label-1"><b>Select Smoker:</b> </label>
+                <select class="selectpicker form-control" id="smoker" name="smoker" required="1">
+
+                {% for for_smoker in smoker %}
+
+                <option value="{{ for_smoker }}">{{ for_smoker }}</option>
+                    
+                {% endfor %}
+
+                </select>
+            </div>
+            <div class="col-md-10" style="text-align: center">
+                <label class="text-label-1"><b>Select Region:</b> </label>
+                <select class="selectpicker form-control" id="region" name="region" required="1">
+
+                {% for for_region in region %}
+
+                <option value="{{ for_region }}">{{ for_region }}</option>
+                    
+                {% endfor %}
+
+                </select>
+            </div>
+            <div class="col-md-10 form-group" style="text-align: center">
+                <button  class="btn btn-primary form-control" onclick="send_data()">Predict Cost</button>
+            </div>
+        </form>
+        <br>
+        <div>
+            <div class="col-12" style="text-align: center">
+                <h4><span id="prediction"></span></h4>
+            </div>
+            
+
+            <script>
+
+
+
+                function form_handler(event) {
+                    event.preventDefault(); // Don't submit the form normally
+                }
+                function send_data()
+                {
+                    document.querySelector('form').addEventListener("submit",form_handler);
+            
+                    var fd=new FormData(document.querySelector('form'));
+            
+                    var xhr= new XMLHttpRequest({mozSystem: true});
+            
+                    xhr.open('POST','/predict',true);
+                    document.getElementById('prediction').innerHTML="Wait! Predicting Cost.....";
+                    xhr.onreadystatechange = function(){
+                        if(xhr.readyState == XMLHttpRequest.DONE){
+                            document.getElementById('prediction').innerHTML="Medical Insurance Premiums Cost: $"+xhr.responseText;
+            
+                        }
+                    };
+            
+                    xhr.onload= function(){};
+            
+                    xhr.send(fd);
+                }
+            </script>
+</body>
+<body>
+    <div  style="text-align: center">
+        <button  class="button button2" onclick="window.location.href = 'https://github.com/aftabfaiz1999';">Github</button>
+    </div>
+    <div  style="text-align: center">
+        <button  class="button button3" onclick="window.location.href = 'https://www.linkedin.com/in/aaftab-shaikh-a283a1165/';">linkedin</button>
+    </div>
+</body>
+</html>
