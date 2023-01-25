@@ -20,7 +20,6 @@ pickle for model dump
 Html,
 Css,
 Javascript,
-Bootstrap,
 Clean.csv,
 
 # Model Working
