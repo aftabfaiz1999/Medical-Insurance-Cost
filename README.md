@@ -34,4 +34,4 @@ model.pkl for prediction,
 jinja2 for taking values from pandas variable into html page and predict the value 
 
 # Demo live
-
+https://medical-insurance-cost.onrender.com/
